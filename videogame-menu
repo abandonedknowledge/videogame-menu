@@ -1,0 +1,87 @@
+var name = "";
+var personality = "";
+var color = "";
+var weapon = "";
+var results = "";
+
+//on event for begin/go again button + continue buttons
+onEvent("beginButton", "click", function () {
+  setScreen("colorScreen");
+});
+
+onEvent("continButtonColor", "click", function () {
+  setScreen("personalityScreen");
+});
+
+onEvent("continButtonPer", "click", function () {
+  setScreen("weaponScreen");
+});
+
+onEvent("continButtonWeapon", "click", function () {
+  setScreen("resultsScreen");
+});
+
+onEvent("goAgainButton", "click", function () {
+  setScreen("homeScreen");
+});
+//gets name input
+onEvent("nameInput", "input", function () {
+ name = getText("nameInput"); 
+ 
+});
+//gets favorite color input
+onEvent("favColorDropdown", "input", function () {
+ color = getText("favColorDropdown"); 
+ updateScreen();
+ 
+});
+//gets personality input
+onEvent("personalityDropdown", "input", function () {
+ personality = getText("personalityDropdown");
+ updateScreen();
+ 
+});
+
+//gets weapon input
+onEvent("weaponDropdown", "input", function () {
+ weapon = getText("weaponDropdown"); 
+ updateScreen();
+ 
+});
+
+function updateScreen() {
+if(color == "Red" && weapon == "Dagger" && personality == "Calm, collected, unassuming") {
+  results = "Ren Amamiya"; 
+  setProperty("renResultsImage", "hidden", false);
+  } else if(color == "Black/Grey" && weapon == "Scimitar" && personality == "Demanding, self-conscious, stoic") {
+  results = "Morgana"; 
+  setProperty("morganaResultsImage", "hidden", false);
+  } else if(color == "Yellow" && weapon == "Blunt object" && personality == "Loud, crass, dense") {
+  results = "Ryuji Sakomoto"; 
+  setProperty("ryujiResultsImage", "hidden", false);
+} else if(color == "Pink" || color == "Red" && weapon == "Whip" && personality == "hot-headed, airheaded, bubbly") {
+  results = "Ann Takamaki";
+  setProperty("annResultsImage", "hidden", false);
+  } else if(color == "Blue" && weapon == "Katana" && personality == "Artistic, philosophical, stubborn") {
+  results = "Yusuke Kitagawa";
+  setProperty("yusukeResultsImage", "hidden", false);
+  } else if(color == "Teal" && weapon == "Brass Knuckles" && personality == "Diligent, obedient, serious") {
+  results = "Makoto Nijima";
+  setProperty("makotoResultsImage", "hidden", false);
+  } else if(color == "Green" && weapon == "None" && personality == "Introverted, tech-savvy, eccentric") {
+  results = "Futaba Sakura";
+  setProperty("futabaResultsImage", "hidden", false);
+  } else if(color == "Pink" && weapon == "Axe" && personality == "Soft-spoken, green-thumb, dark") {
+  results = "Haru Okumura";
+  setProperty("haruResultsImage", "hidden", false);
+} else if(color == "Orange" || color == "Brown" && weapon == "Rapier" && personality == "Calculated, intelligent, sly") {
+  results = "Akechi Goro";
+  setProperty("akechiResultsImage", "hidden", false);
+  
+  }
+  
+}
+
+//sets results output text
+setText("resultOutput", results);
+setProperty("resultOutput", "hidden", false);
